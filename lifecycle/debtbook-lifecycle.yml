@@ -1,0 +1,50 @@
+generated: '2026-08-04'
+method: searched
+source: https://status.debtbook.com/ + https://www.debtbook.com/release-notes
+versioning:
+  scheme: none-published
+  note: DebtBook ships continuously and communicates change through dated release notes
+    rather than a numbered public API version. No API version scheme (URI path, header,
+    or date train) is published because no public API contract is published.
+release_notes: https://www.debtbook.com/release-notes
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: no public deprecation policy and no RFC 8594 Sunset/Deprecation header support
+    could be confirmed; DebtBook publishes no API surface on which such headers would
+    apply.
+sla:
+  url: null
+  uptime_target: null
+  note: no publicly posted uptime commitment; availability commitments appear only in
+    customer contracts.
+status_page:
+  url: https://status.debtbook.com/
+  platform: Atlassian Statuspage
+  api: https://status.debtbook.com/api/v2/summary.json
+  components:
+  - name: Application
+    description: Application and supporting APIs
+    tracked_since: '2020-10-05'
+  - name: Website
+    description: Company website
+    tracked_since: '2020-10-04'
+  observed:
+    fetched: '2026-08-04'
+    indicator: none
+    description: All Systems Operational
+    open_incidents: 0
+    scheduled_maintenances: 0
+deprecated_operations: []
+gaps:
+- No deprecation policy published
+- No public SLA / uptime target published
+- No API versioning policy published
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://status.debtbook.com/api/v2/summary.json
+    http_status: 200
+    content_type: application/json
+  - url: https://www.debtbook.com/release-notes
+    http_status: 200

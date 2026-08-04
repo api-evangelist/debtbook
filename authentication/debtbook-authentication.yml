@@ -1,0 +1,98 @@
+generated: '2026-08-04'
+method: searched
+source: https://debtbook.okta.com/.well-known/openid-configuration
+docs: https://support.debtbook.com/en/
+note: 'DebtBook publishes no OpenAPI, so there are no securitySchemes to derive from.
+  This profile is built from the two authorization-server metadata documents DebtBook''s
+  Okta tenant actually serves, plus the platform''s documented single sign-on support.
+  It describes how a HUMAN or an SSO-federated organization authenticates to the DebtBook
+  application — DebtBook does not publish a self-service developer credential (no API
+  key issuance, no public OAuth client registration, no documented developer token flow).'
+summary:
+  types:
+  - openIdConnect
+  - oauth2
+  api_key_in: []
+  oauth2_flows:
+  - authorizationCode
+  - implicit
+  - refresh_token
+  - password
+  - device_code
+  - ciba
+  developer_credentials_published: false
+  sso: true
+schemes:
+- name: DebtBookOkta
+  type: openIdConnect
+  openIdConnectUrl: https://debtbook.okta.com/.well-known/openid-configuration
+  issuer: https://debtbook.okta.com
+  provider: Okta
+  endpoints:
+    authorization: https://debtbook.okta.com/oauth2/v1/authorize
+    token: https://debtbook.okta.com/oauth2/v1/token
+    userinfo: https://debtbook.okta.com/oauth2/v1/userinfo
+    jwks: https://debtbook.okta.com/oauth2/v1/keys
+    end_session: https://debtbook.okta.com/oauth2/v1/logout
+  scopes:
+  - openid
+  - email
+  - profile
+  - address
+  - phone
+  - offline_access
+  - groups
+  response_types:
+  - code
+  - id_token
+  - code id_token
+  - code token
+  - id_token token
+  - code id_token token
+  grant_types:
+  - authorization_code
+  - implicit
+  - refresh_token
+  - password
+  - urn:ietf:params:oauth:grant-type:device_code
+  - urn:openid:params:grant-type:ciba
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  - client_secret_post
+  - client_secret_jwt
+  - private_key_jwt
+  - none
+  pkce:
+    supported: true
+    code_challenge_methods:
+    - S256
+  sources:
+  - well-known/debtbook-openid-configuration.json
+  - well-known/debtbook-oauth-authorization-server.json
+sso:
+  supported: true
+  docs: https://support.debtbook.com/en/
+  note: DebtBook's help center carries a Single Sign-On (SSO) collection for configuring
+    organizational SSO; the article bodies are behind customer login, so the specific
+    IdP list and protocol (SAML vs OIDC) could not be confirmed anonymously.
+third_party_data_access:
+  - name: Koxa Treasury Gateway
+    role: DebtBook's Cash Management product reaches customer bank accounts through
+      Koxa's open banking platform, not through a DebtBook-published API.
+    api_host: https://api.koxa.io
+    terms: https://www.debtbook.com/cash-management-terms-api-integration
+    evidence: window.KOXA_API_URL observed in the public application bootstrap script
+      at https://app.debtbook.com/app_vars.js
+gaps:
+- No public developer authentication documentation
+- No documented API key or personal access token issuance
+- No public OAuth client registration or developer application console
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+  - url: https://debtbook.okta.com/.well-known/openid-configuration
+    http_status: 200
+    content_type: application/json
+  - url: https://debtbook.okta.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json

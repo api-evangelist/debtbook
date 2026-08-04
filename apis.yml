@@ -1,17 +1,40 @@
 aid: debtbook
 name: DebtBook
-description: 'DebtBook is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'DebtBook (a trademark of Fifth Asset, Inc., Charlotte, NC) is a cloud-based
+  treasury and accounting software platform built for public finance teams — state
+  and local government, K-12 and higher education, healthcare, and nonprofits. The
+  platform covers debt management, cash management, investment management, contract
+  management, and lease/subscription accounting under GASB 87, GASB 96 and ASC 842,
+  plus an AI layer (Insights and the Marty analyst) that produces daily briefings and
+  plain-English answers over an organization''s treasury data. DebtBook''s Cash Management
+  product pulls real-time bank account data into the platform through a secure API
+  integration powered by Koxa''s Treasury Gateway, connecting customers to accounts
+  at PNC, Regions Bank, Bank of America, JPMorgan, Wells Fargo and a growing list of
+  US banks. As of this profile DebtBook publishes no public developer portal, no API
+  reference, and no machine-readable API contract — its API surface is an inbound,
+  contracted integration governed by published API integration terms rather than a
+  self-service developer program.'
+image: https://www.debtbook.com/hs-fs/hubfs/DB-Logo_Blue-MD.png
 url: https://raw.githubusercontent.com/api-evangelist/debtbook/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
+- Treasury Management
+- Government
+- Public Finance
+- Debt Management
+- Cash Management
+- Accounting
+- Lease Accounting
+- Investment Management
+- Nonprofit
+- Higher Education
+- Healthcare
+- SaaS
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +42,66 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/debtbook-domain-security.yml
 - type: Website
+  url: https://www.debtbook.com/
+- type: SecondaryMarket
   url: https://forgeglobal.com/debtbook_stock/
+- type: Support
+  url: https://support.debtbook.com/en/
+- type: HelpCenter
+  url: https://support.debtbook.com/en/
+- type: Blog
+  url: https://www.debtbook.com/blog
+- type: Pricing
+  url: https://www.debtbook.com/pricing
+- type: SignUp
+  url: https://www.debtbook.com/demo
+- type: Login
+  url: https://app.debtbook.com/
+- type: TermsOfService
+  url: https://www.debtbook.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.debtbook.com/privacy-policy
+- type: Legal
+  url: https://www.debtbook.com/legal
+- type: ChangeLog
+  url: https://www.debtbook.com/release-notes
+- type: ChangeLog
+  name: DebtBook release notes (harvested)
+  url: changelog/debtbook-changelog.yml
+- type: StatusPage
+  url: https://status.debtbook.com/
+- type: Security
+  url: https://www.debtbook.com/vdp
+- type: SecurityPolicy
+  url: https://www.debtbook.com/security
+- type: TrustCenter
+  url: https://trust.debtbook.com/
+- type: Compliance
+  url: https://trust.debtbook.com/
+- type: TrustCenter
+  name: DebtBook trust center (harvested)
+  url: security/debtbook-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/debtbook-vulnerability-disclosure.yml
+- type: Lifecycle
+  url: lifecycle/debtbook-lifecycle.yml
+- type: Conformance
+  url: conformance/debtbook-conformance.yml
+- type: WellKnown
+  url: well-known/debtbook-well-known.yml
+- type: OpenIDConnect
+  url: well-known/debtbook-openid-configuration.json
+- type: Authentication
+  url: authentication/debtbook-authentication.yml
+- type: LLMsTxt
+  url: llms/debtbook-llms.txt
+- type: Packages
+  url: packages/debtbook-packages.yml
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1

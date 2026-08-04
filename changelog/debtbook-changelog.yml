@@ -1,0 +1,62 @@
+generated: '2026-08-04'
+method: searched
+source: https://www.debtbook.com/release-notes
+scheme: dated-release-notes
+current_version: null
+note: DebtBook publishes product release notes dated on a roughly two-week cadence.
+  There is no numbered version, no API changelog, and no breaking-change classification
+  — these are application feature notes, not an API change log.
+cadence: approximately biweekly
+entries:
+- date: '2026-07-24'
+  title: 'Debt Proceeds: formatted imports for project spend'
+  breaking: false
+  highlights:
+  - Bulk-import project spend from formatted files instead of manual entry
+  - Column mappings configured once at the organization level and reused on future
+    imports
+  - Auto-match projects to DebtBook, with on-the-fly handling of unmapped projects
+- date: '2026-07-10'
+  title: 'Debt: new Issues tab experience and Proceeds Overview tab'
+  breaking: false
+  highlights:
+  - Active/Inactive tabs filter issues by outstanding PAR status
+  - New Overview tab aggregates spend and remaining balance in one view
+  - Latest-activity dashboard surfaces recent spend input and trustee transactions
+- date: '2026-05-15'
+  title: Debt short-term recognition
+  breaking: false
+  highlights:
+  - Short-term liability entries added to journal entries within debt
+  - Entries generated based on the Activity/Balance/None accounting setting
+- date: '2026-05-08'
+  title: Debt payment integration with Cash, and contract reports
+  breaking: false
+  highlights:
+  - Business-day adjustment for debt payments that fall on weekends
+  - Contract payment reports available at the organization level across profiles
+  - Reports filterable by date range and relationship/contract type
+- date: '2026-04-24'
+  title: Lease and subscription IBR calculation, and cash forecast import
+  breaking: false
+  highlights:
+  - In-app Incremental Borrowing Rate calculator for new leases and subscriptions
+  - Supports data from 2025 forward; the template remains available for older agreements
+  - Cash forecast import now shows a preview before saving changes
+- date: '2026-04-10'
+  title: Journal entry consolidation methods
+  breaking: false
+  highlights:
+  - Choice between "By Allocation & Lease Component" and "By Allocation Only" consolidation
+  - The new method combines related components into a single row/cell
+- date: '2026-03-27'
+  title: Contract management updates
+  breaking: false
+  highlights:
+  - Custom tasks auto-populate on new contracts, configured by contract type
+  - Expense, revenue and active-contract charts added for trend visibility
+  - Fixes to contract component saving and payment schedule confirmation
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://www.debtbook.com/release-notes
+  http_status: 200

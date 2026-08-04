@@ -1,0 +1,49 @@
+generated: '2026-08-04'
+method: searched
+source: https://trust.debtbook.com/
+probe: true
+url: https://trust.debtbook.com/
+platform: SecurityPal (trust.debtbook.com is a CNAME to debtbook.securitypal.com)
+security_page: https://www.debtbook.com/security
+certifications:
+- SOC 1 Type 1
+- SOC 1 Type 2
+- SOC 2 Type 1
+- SOC 2 Type 2
+- CSA STAR Level One
+documents:
+- name: SOC bridge letters
+  cadence: quarterly
+  access: available from the Trust Center Documents section
+posture:
+- Recognized security frameworks, continuous monitoring and regular third-party assessments
+  (per https://www.debtbook.com/security)
+- Audit reports, certifications, security policies and compliance documentation are
+  centralized in the trust center rather than published on the marketing site
+gaps:
+- No ISO 27001 certification named
+- No PCI DSS certification named
+- No HIPAA attestation named (notable given the healthcare vertical the platform serves)
+- No FedRAMP authorization named (notable given the state/local government vertical)
+- Certification artifacts are gated behind trust-center access rather than published
+  openly
+evidence:
+- source: https://trust.debtbook.com/
+  http_status: 200
+  keywords:
+  - soc 1
+  - soc 2
+  - csa star
+  - trust center
+  fetched: '2026-08-04'
+- source: https://www.debtbook.com/security
+  http_status: 200
+  keywords:
+  - trust center
+  - third-party assessments
+  - continuous monitoring
+  fetched: '2026-08-04'
+x-evidence:
+  fetched: '2026-08-04'
+  note: the mechanical probe returned no hit because trust.debtbook.com renders client-side;
+    the page was fetched and read directly to confirm the named certifications.

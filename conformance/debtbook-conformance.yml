@@ -1,0 +1,92 @@
+generated: '2026-08-04'
+method: searched
+source: probes of debtbook.okta.com discovery documents, https://trust.debtbook.com/,
+  https://www.debtbook.com/vdp, https://status.debtbook.com/
+note: DebtBook publishes no OpenAPI, AsyncAPI, GraphQL SDL or MCP manifest, so the
+  API-contract standards below are all recorded as not conforming for want of a published
+  contract — not as a failure of an existing one. The identity standards are confirmed
+  live from the authorization server metadata DebtBook's Okta tenant serves.
+standards:
+- id: openid-connect-discovery
+  conforms: true
+  evidence: https://debtbook.okta.com/.well-known/openid-configuration returns 200
+    with a valid OIDC Discovery 1.0 document (issuer https://debtbook.okta.com)
+- id: oauth2
+  conforms: true
+  evidence: authorization_code, refresh_token, device_code and CIBA grants advertised
+    in the authorization server metadata
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: https://debtbook.okta.com/.well-known/oauth-authorization-server returns
+    200 with 83 supported scopes
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256
+- id: soc2
+  conforms: true
+  evidence: SOC 2 Type 1 and Type 2 named on https://trust.debtbook.com/; quarterly
+    SOC bridge letters published to trust-center subscribers
+- id: soc1
+  conforms: true
+  evidence: SOC 1 Type 1 and Type 2 named on https://trust.debtbook.com/
+- id: csa-star
+  conforms: true
+  evidence: CSA STAR Level One named on https://trust.debtbook.com/
+- id: gasb-87
+  conforms: true
+  evidence: GASB 87 lease accounting is a named product capability
+- id: gasb-96
+  conforms: true
+  evidence: GASB 96 subscription-based IT arrangement accounting is a named product
+    capability
+- id: asc-842
+  conforms: true
+  evidence: ASC 842 lease accounting is a named product capability
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt served on any DebtBook host (404 on www.debtbook.com,
+    SPA catch-all HTML on app.debtbook.com)
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI/Swagger document found on any host after probing /openapi.json,
+    /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs, /api/openapi.json
+- id: asyncapi
+  conforms: false
+  evidence: no AsyncAPI document published; the only event surface observed is an
+    authenticated Rails ActionCable WebSocket internal to the application
+- id: graphql
+  conforms: false
+  evidence: /graphql returns the SPA HTML shell on app.debtbook.com and 404 on www.debtbook.com
+- id: mcp
+  conforms: false
+  evidence: no hosted MCP server advertised in docs, registries or on any host
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json miss on every
+    host (404 on www.debtbook.com; SPA catch-all HTML on app.debtbook.com and app.use1.prod.debtbook.com)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no published error contract
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no deprecation policy or Sunset header support published
+- id: iso-27001
+  conforms: false
+  evidence: not named on the trust center or security page
+- id: hipaa
+  conforms: false
+  evidence: not named on the trust center or security page, despite a healthcare vertical
+- id: fedramp
+  conforms: false
+  evidence: not named on the trust center or security page, despite a state/local government
+    vertical
+- id: pci-dss
+  conforms: false
+  evidence: not named on the trust center or security page
+- id: dodd-frank-1033
+  conforms: null
+  evidence: DebtBook's Cash Management bank connectivity runs on Koxa's Treasury Gateway,
+    which Koxa markets as a Dodd-Frank Section 1033 open-banking gateway; the compliance
+    posture belongs to Koxa, not to a DebtBook-published interface
+x-evidence:
+  fetched: '2026-08-04'

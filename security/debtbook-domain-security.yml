@@ -1,0 +1,53 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.debtbook.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 28 14:28:11 2026 GMT
+  hsts: null
+  note: marketing site served by HubSpot CMS; no Strict-Transport-Security header observed
+- host: app.debtbook.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 29 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  note: production application host (in scope for the vulnerability disclosure program)
+- host: status.debtbook.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 15:23:58 2026 GMT
+  hsts: true
+  hsts_max_age: 259200
+  note: Atlassian Statuspage
+- host: trust.debtbook.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 13:34:31 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  hsts_preload: true
+  note: SecurityPal-hosted trust center
+- host: support.debtbook.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 15 23:59:59 2026 GMT
+  hsts: null
+  note: Intercom-hosted help center; redirects (302) to /en/
+domains:
+- domain: debtbook.com
+  dnssec: true
+  caa:
+  - 0 issue "awstrust.com"
+  - 0 issue "digicert.com"
+  - 0 issue "godaddy.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "amazon.com"
+  - 0 issue "amazontrust.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

@@ -1,0 +1,28 @@
+generated: '2026-08-04'
+method: searched
+source: npm registry search, PyPI, GitHub org + code search, DebtBook docs and help
+  center
+packages: []
+official_sdk_count: 0
+findings:
+- registry: npm
+  query: debtbook
+  result: no first-party packages; registry search returned no @debtbook scope and no
+    DebtBook-published client library
+- registry: pypi
+  query: debtbook
+  result: 404 — no package
+- registry: github
+  query: org:debtbook
+  result: 404 — no public GitHub organization named debtbook; a code search for "debtbook"
+    returns only unrelated third-party personal projects (student debt trackers, shop
+    ledgers)
+- registry: docs
+  query: DebtBook help center and marketing site
+  result: no SDK, client library or code sample surface published
+note: DebtBook publishes no first-party client libraries. This is consistent with the
+  rest of the profile — the platform is a closed SaaS application with a contracted
+  inbound bank-data integration (Koxa Treasury Gateway), not a self-service developer
+  platform.
+x-evidence:
+  fetched: '2026-08-04'

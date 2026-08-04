@@ -1,0 +1,99 @@
+generated: '2026-08-04'
+method: searched
+source: live probes of every DebtBook host discovered from apis.yml and the vulnerability
+  disclosure program scope
+notes: 'app.debtbook.com and app.use1.prod.debtbook.com are single-page applications
+  whose server answers HTTP 200 with the SPA HTML shell for EVERY /.well-known/* path.
+  Those 200s are catch-all false positives, not published documents — every response
+  body was `<!doctype html>`, not JSON/text — and are recorded here as `status: 200`
+  with `spa_catch_all: true` so a later run does not mistake them for real discovery
+  documents. The only genuine /.well-known/ documents DebtBook serves are the OIDC
+  and OAuth 2.0 Authorization Server metadata on its Okta tenant.'
+hosts:
+- host: https://debtbook.okta.com
+  role: identity provider (Okta tenant backing DebtBook single sign-on)
+  documents:
+  - path: /.well-known/openid-configuration
+    spec: OpenID Connect Discovery 1.0
+    status: 200
+    content_type: application/json
+    file: debtbook-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+    status: 200
+    content_type: application/json
+    file: debtbook-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 405
+- host: https://www.debtbook.com
+  role: marketing site (HubSpot CMS)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://app.debtbook.com
+  role: production application
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/openid-configuration
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/api-catalog
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/agent-card.json
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/agent.json
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+- host: https://app.use1.prod.debtbook.com
+  role: production application origin behind app.debtbook.com (AWS ELB)
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+  - path: /.well-known/security.txt
+    status: 200
+    spa_catch_all: true
+    content_type: text/html
+security_txt: none
+api_catalog: none
+agent_card: none
+x-evidence:
+  fetched: '2026-08-04'
+  method: HTTP GET, following redirects, content-type and body-shape verified per response
